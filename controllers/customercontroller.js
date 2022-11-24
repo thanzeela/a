@@ -38,7 +38,7 @@ module.exports.update = (req, res, next) => {
 }
 module.exports.updatePost = async (req, res, next) => {
     var user = await customer.findByPk(req.params.id);
-    await customer.update(
+    await user.update(
         {
             name: req.body.name,
             user_name: req.body.user_name,
@@ -55,4 +55,15 @@ module.exports.updatePost = async (req, res, next) => {
     )
     res.redirect('/');
 }
-
+module.exports.delete = async (req, res, next) => {
+    let id = req.params.id;
+    let user = await customer.findByPk(id);
+    if (user) {
+        await customer.destroy({
+            where: {
+                id: id
+            }
+        });
+        res.redirect("/");
+    }
+}

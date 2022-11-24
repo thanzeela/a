@@ -8,7 +8,7 @@ router.get('/create', cc.create);
 router.post('/create', cc.createPost);
 router.get('/update/:id', cc.update);
 router.post('/update/:id', cc.updatePost);
-
+router.get('/delete/:id', cc.delete);
 
 
 module.exports = router;
