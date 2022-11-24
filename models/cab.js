@@ -28,5 +28,5 @@ const cab = db.sequelize.define('cab',{
     },
 });
 module.exports = cab;
-module.exports;
+
     
