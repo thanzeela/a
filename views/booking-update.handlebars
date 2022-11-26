@@ -14,6 +14,7 @@
 
         <form method="post" >
             <table cellspacing="6" cellpadding="4">
+               
                 <tr>
                 <td>
                     <label  for="choose_your_cab">CHOOSE YOUR CAB</label>
@@ -27,6 +28,35 @@
                     </select>
                 </td>
                 </tr>
+{{!-- <tr>
+                    <td>
+
+                    <label for="cab_id"> CAB ID:</label>
+                </td>
+                
+                <td>
+                    <input type="integer" id="cab_id" name="cab_id" >
+
+            </td>
+            </tr> --}}
+             <tr>
+                    <td>
+
+                    <label for="id"> CUSTOMER ID:</label>
+                </td>
+                
+                <td>
+                    <input type="integer" id="id" name="id" >
+
+            </td>
+            </tr>
+
+
+
+
+
+
+
                 <tr>
                     <td>
 
@@ -49,14 +79,7 @@
             
             
         
-            <tr>
-                <td>
-                    <label for ="number_of_passenger">PICK UP DATE:</label>
-                </td>
-                <td>
-                    <input type="text" id="number_of_passenger" name="number_of_passenger" value="{{data.dataValues.number_of_passenger}}" >
-                </td>
-            </tr>
+           
             <tr>
                 <td>
                     <label for="pick_up_time">PICK UP TIME:</label>
