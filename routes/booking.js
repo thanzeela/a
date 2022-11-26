@@ -1,7 +1,14 @@
 const express = require('express');
-const cc = require('../controllers/bookingcontroller');
+const bc = require('../controllers/bookingcontrollers');
 const router = express.Router()
 
 
-router.get('/booking', cc.getAll)
+router.get('/', bc.bookingindex);
+router.get('/create', bc.bookingcreate);
+router.post('/create', bc.bookingcreatePost);
+router.get('/update/:id', bc.bookingupdate);
+router.post('/update/:id', bc.bookingupdatePost);
+router.get('/delete/:id', bc.bookingdelete);
+
+
 module.exports = router;

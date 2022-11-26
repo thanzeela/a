@@ -1,0 +1,34 @@
+<h1 class="text-center">Booking Details</h1>
+<div class="container">
+    <a href="/booking/create" class="btn btn-primary">+ New customer</a>
+    <table class="table table-striped mt-4">
+        <tr>
+            <th>id</th>
+            <th>choose_your_cab</th>
+            <th>date_of_booking</th>
+            <th>date_of_travel</th>
+            <th>number_of_passengers</th>
+            <th>pick_up-time</th>
+            <th>pick_up_location</th>
+            <th>drop_off_location</th>
+          
+        </tr>
+        {{#each data}}
+        <tr>
+            <td>{{this.dataValues.id}}</td>
+            <td>{{this.dataValues.choose_your_cab}}</td>
+            <td>{{this.dataValues.date_of_booking}}</td>
+            <td>{{this.dataValues.date_of_travel}}</td>
+            <td>{{this.dataValues.number_of_passengers}}</td>
+            <td>{{this.dataValues.pick_up_time}}</td>
+            <td>{{this.dataValues.pick_up_location}}</td>
+            <td>{{this.dataValues.drop_off_location}}</td>
+            
+            <td>
+                <a href="/booking/update/{{this.dataValues.id}}">Edit</a> |
+                <a href="/booking/delete/{{this.dataValues.id}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>

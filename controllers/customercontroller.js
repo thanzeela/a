@@ -24,7 +24,7 @@ module.exports.createPost = (req, res, next) => {
             dob: req.body.dob
         })
         .then(user => {
-            res.redirect("/");
+            res.redirect("/login");
         })
 }
 
