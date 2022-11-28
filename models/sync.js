@@ -17,10 +17,10 @@ const cab = require('./cab')
 // booking.belongsTo(driver,{
 //     foreignKey:'driver_id'
 // });
-// cab.hasMany(booking,{foreignKey:'cab_id'});
-// booking.belongsTo(cab,{
-//     foreignKey:'cab_id'
-// });
+cab.hasMany(booking,{foreignKey:'cab_id'});
+booking.belongsTo(cab,{
+    foreignKey:'cab_id'
+});
 customer.hasMany(booking,{foreignKey:'id'});
 booking.belongsTo(customer,{
     foreignKey:'id'

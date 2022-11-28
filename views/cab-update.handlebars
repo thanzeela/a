@@ -1,0 +1,52 @@
+<div class="container">
+        <h1 class="text-center">Cab details page</h1>
+
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post" >
+                <div>
+                    <label for="cab_number">CAB NUMBER</label>
+
+                    <input type="integer" name="cab_number" id="cab_number" class="form-control" value="{{data.dataValues.cab_number}}"  >
+                </div>
+                <div>
+                    <label for="cab_model">CAB MODEL</label>
+                    <input type="name" name="cab_model" id="cab_model" class="form-control"   value="{{data.dataValues.cab_model}}"   >
+                </div>
+
+                <div>
+                    <label for="cab_description">CAB DESCRIPTION</label>
+                    <input type="name" name="cab_description" id="cab_description" class="form-control" value="{{data.dataValues.cab_description}}"    >
+                </div>
+                <div>
+                    <label for="cab_total_capacity">CAB TOTAL CAPACITY</label>
+                    <input type="integer" name="cab_total_capacity" id="cab_total_capacity" class="form-control" value="{{data.dataValues.cab-total_capacity}}"    >
+                </div>
+                 {{!-- <div>
+                    <label for="driver_id">DRIVER ID </label>
+                    <input type="integer" name="driver_id" id="driver_id" class="form-control" value="{{data.dataValues.driver_id}}">
+                </div> --}}
+                
+
+
+
+                {{#if result}}
+                {{#if result.success}}
+                <div class="alert alert-success ">
+                    Data saved succesfully
+                </div>
+                {{else}}
+                 <div class="alert alert-danger ">
+                    unable to save data
+                </div>
+
+                {{/if}}
+                {{/if}}
+                <div class="d-grid-mt-3">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  

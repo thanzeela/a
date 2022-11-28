@@ -3,6 +3,7 @@ const parser =require('body-parser');
 const customerRoute = require('./routes/customer')
 const loginRoutes = require('./routes/login');
 const bookingRoutes = require('./routes/booking');
+const cabRoutes = require('./routes/cab');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine} = require('express-handlebars');
@@ -25,6 +26,7 @@ app.use(authMiddleware);
 app.use(customerRoute);
 app.use(loginRoutes);
 app.use("/booking",bookingRoutes);
+app.use("/cab",cabRoutes)
 
 
 

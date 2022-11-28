@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
         isAuthenticated: false,
         user: null
     }
-
+    console.log('🚗🚗🚗🚗🚗🚗🚗')
     if(req.url == "/login" || req.url == "/create"){
         return next();
     }

@@ -14,11 +14,11 @@ module.exports.bookingcreate = (req, res, next) => {
 
 module.exports.bookingcreatePost = (req, res, next) => {
     console.log(req.body)
-    // console.log('🚗')
+    
     booking.create({
 
         
-booking_id:req.body.booking_id,
+        booking_id:req.body.booking_id,
         choose_your_cab: req.body.choose_your_cab,
         id: req.body.id,
         date_of_booking: req.body.date_of_booking,
@@ -76,7 +76,7 @@ module.exports.bookingdelete = async (req, res, next) => {
     if (user) {
         await booking.destroy({
             where: {
-                id: id
+                booking_id: id
             }
         });
         res.redirect("/booking/");
