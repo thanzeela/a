@@ -5,6 +5,7 @@ const loginRoutes = require('./routes/login');
 const bookingRoutes = require('./routes/booking');
 const cabRoutes = require('./routes/cab');
 const driverRoutes = require('./routes/driver');
+const homeRoutes = require('./routes/home');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine} = require('express-handlebars');
@@ -29,6 +30,7 @@ app.use(loginRoutes);
 app.use("/booking",bookingRoutes);
 app.use("/cab",cabRoutes)
 app.use("/driver",driverRoutes)
+app.use(homeRoutes)
 
 
 
