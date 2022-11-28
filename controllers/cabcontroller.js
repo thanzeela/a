@@ -20,7 +20,7 @@ module.exports.createPost = (req, res, next) => {
             cab_model: req.body.cab_model,
             cab_description: req.body.cab_description,
             cab_total_capacity: req.body.cab_total_capacity,
-            // driver_id: req.body.driver_id,
+            driver_id: req.body.driver_id,
            
         })
         .then(user => {
@@ -45,7 +45,7 @@ module.exports.updatePost = async (req, res, next) => {
             cab_model: req.body.cab_model,
             cab_description: req.body.cab_description,
             cab_total_capacity: req.body.cab_total_capacity,
-            // driver_id: req.body.driver_id,
+            driver_id: req.body.driver_id,
             
             
         },

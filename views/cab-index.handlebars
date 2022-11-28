@@ -8,7 +8,7 @@
             <th>cab_model</th>
             <th>cab_description</th>
             <th>cab_total_capacity</th>
-            {{!-- <th>driver_id</th> --}}
+            <th>driver_id</th>
             
         </tr>
         {{#each data}}
@@ -18,7 +18,7 @@
             <td>{{this.dataValues.cab_model}}</td>
             <td>{{this.dataValues.cab_description}}</td>
             <td>{{this.dataValues.cab_total_capacity}}</td>
-            {{!-- <td>{{this.dataValues.driver_id}}</td> --}}
+            <td>{{this.dataValues.driver_id}}</td>
             
             <td>
                 <a href="/cab/update/{{this.dataValues.cab_id}}">Edit</a> |

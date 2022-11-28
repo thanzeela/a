@@ -27,10 +27,10 @@ const cab = db.sequelize.define('cab',{
 
 
     },
-    // driver_id:{
-    //     type:DataTypes.INTEGER,
-    //     allowNull:false
-    // }
+    driver_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    }
 });
 module.exports = cab;
 

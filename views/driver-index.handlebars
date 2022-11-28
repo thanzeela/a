@@ -1,0 +1,26 @@
+<h1 class="text-center">Driver Details</h1>
+<div class="container">
+    <a href="/cab/create" class="btn btn-primary">+ New customer</a>
+    <table class="table table-striped mt-4">
+        <tr>
+            <th>driver_id</th>
+            <th>driver_name</th>
+            <th>driver_mobile_number</th>
+            <th>gender</th>
+            
+        </tr>
+        {{#each data}}
+        <tr>
+            <td>{{this.dataValues.driver_id}}</td>
+            <td>{{this.dataValues.driver_name}}</td>
+            <td>{{this.dataValues.driver_mobile_number}}</td>
+            <td>{{this.dataValues.gender}}</td>
+            
+            <td>
+                <a href="/driver/update/{{this.dataValues.driver_id}}">Edit</a> |
+                <a href="/driver/delete/{{this.dataValues.driver_id}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
