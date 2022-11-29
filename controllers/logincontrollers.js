@@ -15,7 +15,7 @@ module.exports.loginPost = async (req, res, next)=>{
     }
 
     req.session.userId = userFromDb.id;
-    res.redirect('/booking/create');
+    res.redirect('/home')
 }
 
 module.exports.register = (req, res, next)=>{

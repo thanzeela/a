@@ -9,20 +9,17 @@ module.exports.bookingindex = (req, res, next) => {
     })
 }
 module.exports.bookingcreate = (req, res, next) => {
-    res.render('booking-create');
+    res.render('booking-create',{cab_id:req.params.cab_id});
 }
 
 module.exports.bookingcreatePost = (req, res, next) => {
     console.log(req.body)
     
     booking.create({
-
-        
-        booking_id:req.body.booking_id,
         choose_your_cab: req.body.choose_your_cab,
-        // cab_id:req.body.cab_id,
-        // id: req.body.id,
-        // driver_id:req.body.driver_id,
+        cab_id:req.body.cab_id,
+        id: req.body.id,
+        driver_id:req.body.driver_id,
         date_of_booking: req.body.date_of_booking,
         date_of_travel: req.body.date_of_travel,
         number_of_passengers: req.body.number_of_passengers,
