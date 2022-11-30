@@ -4,7 +4,8 @@ const cab = require('../models/cab');
 module.exports.index = (req, res, next) => {
     cab.findAll().then(user => {
         res.render('cab-index', {
-            data: user
+            data: user,
+            cab:req.identity.customer,
         });
     })
 }

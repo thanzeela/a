@@ -48,6 +48,10 @@ const customer = db.sequelize.define('customer',{
         
         allowNull:false
     },
+    role:{
+        type:DataTypes.INTEGER,
+        defaultValue:0
+    }
     
 });
 module.exports = customer;

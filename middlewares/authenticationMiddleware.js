@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
         firstName: userFromDb.dataValues.firstName,
         lastName: userFromDb.dataValues.lastName,
         email: userFromDb.dataValues.email,
-        role: 'user'
+        role: userFromDb.dataValues.role
     }
     next();
 }

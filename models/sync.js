@@ -27,7 +27,7 @@ booking.belongsTo(customer,{
 
 
 
-customer.sync();
+customer.sync({alter:true});
 booking.sync();
 driver.sync();
 cab.sync();
