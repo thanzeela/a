@@ -1,6 +1,7 @@
 const db = require('../models/booking');
 const {body, validationResult} = require('express-validator');
 const booking = require('../models/booking');
+const cab = require('../models/cab')
 module.exports.bookingindex = (req, res, next) => {
     booking.findAll().then(user => {
         res.render('booking-index', {
@@ -9,33 +10,49 @@ module.exports.bookingindex = (req, res, next) => {
     })
 }
 module.exports.bookingcreate = (req, res, next) => {
-    res.render('booking-create',{cab_id:req.params.cab_id});
+    res.render('booking-create',{cab_id : req.params.cab_id}) ;
 }
 
-module.exports.bookingcreatePost = (req, res, next) => {
-    console.log(req.body)
+module.exports.bookingcreatePost =  async (req, res, next) => {
+    // console.log(req.params);
+    console.log('🚗🚗🚗🚗🚗')
+    let cab_id = req.params.cab_id
+    // console.log(cab_id)
+
+
     
-    booking.create({
-        choose_your_cab: req.body.choose_your_cab,
-        cab_id:req.body.cab_id,
-        id: req.body.id,
-        driver_id:req.body.driver_id,
-        date_of_booking: req.body.date_of_booking,
-        date_of_travel: req.body.date_of_travel,
-        number_of_passengers: req.body.number_of_passengers,
-        pick_up_time: req.body.pick_up_time,
-        pick_up_location: req.body.pick_up_location,
-        drop_off_location: req.body.drop_off_location 
-
-
-
-
-
+    await cab.findByPk(cab_id).then((cabDetails)=>{
+      
+        console.log(cabDetails)
+        console.log(cabDetails.driver_id)
+        
+        booking.create({
+            choose_your_cab: req.body.choose_your_cab,
+            cab_id:cab_id,
+            id: req.body.id,
+            driver_id:cabDetails.driver_id,
+            date_of_booking: req.body.date_of_booking,
+            date_of_travel: req.body.date_of_travel,
+            number_of_passengers: req.body.number_of_passengers,
+            pick_up_time: req.body.pick_up_time,
+            pick_up_location: req.body.pick_up_location,
+            drop_off_location: req.body.drop_off_location 
             
-        })
-        .then(user => {
-            res.redirect("/booking/");
-        })
+    
+    
+    
+    
+    
+                
+            })
+
+    })
+    res.redirect("/booking/");
+    
+    
+//         .then(user => {
+//             res.redirect("/booking/");
+//         })
 }
 
 module.exports.bookingupdate = (req, res, next) => {
