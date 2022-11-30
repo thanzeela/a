@@ -52,21 +52,10 @@ const booking = db.sequelize.define('booking',{
         type:DataTypes.INTEGER,
         allowNull:false
     },
-    driver_id:{
+    id:{
         type:DataTypes.INTEGER,
         allowNull:false
-    },
-    // id:{
-    //     type:DataTypes.INTEGER,
-    //     allowNull:false
-    // },
-
-    
-
-
-   
-    
-    
+    }  
 });
 
 

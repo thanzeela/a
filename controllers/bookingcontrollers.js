@@ -15,7 +15,7 @@ module.exports.bookingcreate = (req, res, next) => {
 
 module.exports.bookingcreatePost =  async (req, res, next) => {
     // console.log(req.params);
-    console.log('🚗🚗🚗🚗🚗')
+   
     let cab_id = req.params.cab_id
     // console.log(cab_id)
 
@@ -29,8 +29,7 @@ module.exports.bookingcreatePost =  async (req, res, next) => {
         booking.create({
             choose_your_cab: req.body.choose_your_cab,
             cab_id:cab_id,
-            id: req.body.id,
-            driver_id:cabDetails.driver_id,
+            id: req.identity.customer.id,
             date_of_booking: req.body.date_of_booking,
             date_of_travel: req.body.date_of_travel,
             number_of_passengers: req.body.number_of_passengers,
