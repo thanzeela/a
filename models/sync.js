@@ -7,6 +7,9 @@ const driver = require('./driver')
 const cab = require('./cab')
 
 
+const payment = require('./payment')
+
+
 
 
 driver.hasMany(cab,{foreignKey:'driver_id'});
@@ -31,3 +34,4 @@ customer.sync({alter:true});
 booking.sync();
 driver.sync();
 cab.sync();
+payment.sync();

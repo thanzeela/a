@@ -35,7 +35,8 @@ module.exports.bookingcreatePost =  async (req, res, next) => {
             number_of_passengers: req.body.number_of_passengers,
             pick_up_time: req.body.pick_up_time,
             pick_up_location: req.body.pick_up_location,
-            drop_off_location: req.body.drop_off_location 
+            drop_off_location: req.body.drop_off_location, 
+            
             
     
     

@@ -31,6 +31,7 @@ const cab = db.sequelize.define('cab',{
         type:DataTypes.INTEGER,
         allowNull:false
     }
+   
 });
 module.exports = cab;
 

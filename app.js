@@ -7,6 +7,7 @@ const cabRoutes = require('./routes/cab');
 const driverRoutes = require('./routes/driver');
 const homeRoutes = require('./routes/home');
 const viewcabsRoutes = require('./routes/viewcabs');
+const paymentRoutes = require('./routes/payment');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine} = require('express-handlebars');
@@ -29,11 +30,12 @@ app.use(authMiddleware);
 app.use(customerRoute);
 app.use(loginRoutes);
 app.use("/booking",bookingRoutes);
-app.use("/cab",cabRoutes)
-app.use("/driver",driverRoutes)
-app.use(homeRoutes)
+app.use("/cab",cabRoutes);
+app.use("/driver",driverRoutes);
+app.use("/payment",paymentRoutes);
+app.use(homeRoutes);
 app.use(viewcabsRoutes)
-
+;
 
 
 function handler(req, res){
