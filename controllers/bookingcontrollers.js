@@ -2,6 +2,7 @@ const db = require('../models/booking');
 const {body, validationResult} = require('express-validator');
 const booking = require('../models/booking');
 const cab = require('../models/cab')
+const payment =  require('../models/payment');
 module.exports.bookingindex = (req, res, next) => {
     booking.findAll().then(user => {
         res.render('booking-index', {
@@ -22,29 +23,43 @@ module.exports.bookingcreatePost =  async (req, res, next) => {
 
     
     await cab.findByPk(cab_id).then((cabDetails)=>{
+        console.log('🛺🛺🛺🛺🛺🛺')
+        console.log(req.body.pick_up_location) 
       
         console.log(cabDetails)
-        console.log(cabDetails.driver_id)
-        
-        booking.create({
-            choose_your_cab: req.body.choose_your_cab,
-            cab_id:cab_id,
-            id: req.identity.customer.id,
-            date_of_booking: req.body.date_of_booking,
-            date_of_travel: req.body.date_of_travel,
-            number_of_passengers: req.body.number_of_passengers,
-            pick_up_time: req.body.pick_up_time,
-            pick_up_location: req.body.pick_up_location,
-            drop_off_location: req.body.drop_off_location, 
-            
-            
-    
-    
-    
-    
-    
+        console.log(cabDetails.driver_id);
+        payment.findOne({where : {
+            pick_up_location : req.body.pick_up_location,
+            drop_off_location : req.body.drop_off_location
+
+        }}).then((paymentDetails)=>{
+            console.log('🚗🚗🚗🚗🚗🚗🚗')
+            console.log(paymentDetails)
+            booking.create({
+                choose_your_cab: req.body.choose_your_cab,
+                cab_id:cab_id,
+                id: req.identity.customer.id,
+                date_of_booking: req.body.date_of_booking,
+                date_of_travel: req.body.date_of_travel,
+                number_of_passengers: req.body.number_of_passengers,
+                pick_up_time: req.body.pick_up_time,
+                pick_up_location: req.body.pick_up_location,
+                drop_off_location: req.body.drop_off_location,
+                cost: paymentDetails.cost 
                 
-            })
+                
+        
+        
+        
+        
+        
+                    
+                })
+            
+        })
+
+        
+       
 
     })
     res.redirect("/booking/");
