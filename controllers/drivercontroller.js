@@ -4,7 +4,8 @@ const driver = require('../models/driver');
 module.exports.index = (req, res, next) => {
     driver.findAll().then(user => {
         res.render('driver-index', {
-            data: user
+            data: user,
+            role:req.identity.customer.role
         });
     })
 }

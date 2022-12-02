@@ -1,7 +1,10 @@
 <h1 class="text-center">Driver Details</h1>
 <div class="container">
-    <a href="/cab/create" class="btn btn-primary">+ New customer</a>
     <table class="table table-success table-striped-columns">
+        {{#if role}}
+        
+        <a href="/driver/create" class="btn btn-outline-primary">Add Driver</a>
+        {{/if}}
         <tr>
             <th>driver_id</th>
             <th>driver_name</th>
