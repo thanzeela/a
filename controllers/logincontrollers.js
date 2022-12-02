@@ -15,7 +15,7 @@ module.exports.loginPost = async (req, res, next)=>{
     }
 
     req.session.userId = userFromDb.id;
-    res.redirect('/home')
+    res.redirect('/cab')
 }
 
 module.exports.register = (req, res, next)=>{
