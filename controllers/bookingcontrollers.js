@@ -1,8 +1,8 @@
 const db = require('../models/booking');
-const {body, validationResult} = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const booking = require('../models/booking');
 const cab = require('../models/cab')
-const payment =  require('../models/payment');
+const payment = require('../models/payment');
 module.exports.bookingindex = (req, res, next) => {
     booking.findAll().then(user => {
         res.render('booking-index', {
@@ -11,33 +11,35 @@ module.exports.bookingindex = (req, res, next) => {
     })
 }
 module.exports.bookingcreate = (req, res, next) => {
-    res.render('booking-create',{cab_id : req.params.cab_id}) ;
+    res.render('booking-create', { cab_id: req.params.cab_id });
 }
 
-module.exports.bookingcreatePost =  async (req, res, next) => {
+module.exports.bookingcreatePost =  (req, res, next) => {
     // console.log(req.params);
-   
+
     let cab_id = req.params.cab_id
     // console.log(cab_id)
 
 
-    
-    await cab.findByPk(cab_id).then((cabDetails)=>{
+
+     cab.findByPk(cab_id).then((cabDetails) => {
         console.log('🛺🛺🛺🛺🛺🛺')
-        console.log(req.body.pick_up_location) 
-      
+        console.log(req.body.pick_up_location)
+
         console.log(cabDetails)
         console.log(cabDetails.driver_id);
-        payment.findOne({where : {
-            pick_up_location : req.body.pick_up_location,
-            drop_off_location : req.body.drop_off_location
+        payment.findOne({
+            where: {
+                pick_up_location: req.body.pick_up_location,
+                drop_off_location: req.body.drop_off_location
 
-        }}).then((paymentDetails)=>{
+            }
+        }).then((paymentDetails) => {
+            console.log(paymentDetails);
             console.log('🚗🚗🚗🚗🚗🚗🚗')
-            console.log(paymentDetails)
             booking.create({
                 choose_your_cab: req.body.choose_your_cab,
-                cab_id:cab_id,
+                cab_id: cab_id,
                 id: req.identity.customer.id,
                 date_of_booking: req.body.date_of_booking,
                 date_of_travel: req.body.date_of_travel,
@@ -45,29 +47,30 @@ module.exports.bookingcreatePost =  async (req, res, next) => {
                 pick_up_time: req.body.pick_up_time,
                 pick_up_location: req.body.pick_up_location,
                 drop_off_location: req.body.drop_off_location,
-                cost: paymentDetails.cost 
+                cost: paymentDetails.cost
+            }).then((result)=>{
+                console.log('🦽🦽🦽🦽🦽🦽🦽')
+
+                console.log(result)
+                res.redirect("/booking/carddetails/"+result.booking_id);
+
+            }
                 
-                
-        
-        
-        
-        
-        
-                    
-                })
-            
+
+            )
+
         })
 
-        
-       
+
+
 
     })
-    res.redirect("/booking/");
-    
-    
-//         .then(user => {
-//             res.redirect("/booking/");
-//         })
+   
+
+
+    //         .then(user => {
+    //             res.redirect("/booking/");
+    //         })
 }
 
 module.exports.bookingupdate = (req, res, next) => {
@@ -83,7 +86,7 @@ module.exports.bookingupdatePost = async (req, res, next) => {
     console.log(req.body)
     await bookingfromdb.update(
         {
-            booking_id:req.body.booking_id,
+            booking_id: req.body.booking_id,
             choose_your_cab: req.body.choose_your_cab,
             // cab_id:req.body.cab_id,
             // id: req.body.id,
@@ -91,14 +94,14 @@ module.exports.bookingupdatePost = async (req, res, next) => {
             date_of_booking: req.body.date_of_booking,
             date_of_travel: req.body.date_of_travel,
             number_of_passengers: req.body.number_of_passengers,
-            pick_up_time:req.body.pick_up_time,
-             pick_up_location: req.body.pick_up_location,
-            drop_off_location: req.body.drop_off_location 
-            
-            
+            pick_up_time: req.body.pick_up_time,
+            pick_up_location: req.body.pick_up_location,
+            drop_off_location: req.body.drop_off_location
+
+
         },
         {
-            where: {id: req.params.id}
+            where: { id: req.params.id }
         }
     )
     res.redirect('/booking/');
@@ -115,3 +118,27 @@ module.exports.bookingdelete = async (req, res, next) => {
         res.redirect("/booking/");
     }
 }
+
+module.exports.carddetails = async (req, res, next) => {
+    var carddetails = await booking.findOne({ where: { booking_id: req.params.id } })
+    console.log(carddetails)
+    res.render('carddetails',
+        {
+           data: carddetails
+       })
+}
+
+module.exports.paymentInvoice = async (req, res, next) => {
+    
+    booking.findOne({ where: { id: req.params.id } })
+        .then(result => {
+            let name = req.identity.customer.name
+            res.render('invoice', {
+                invoice: result,
+                name: name
+            })
+        })
+}
+
+
+

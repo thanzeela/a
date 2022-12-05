@@ -9,6 +9,9 @@ router.post('/create/:cab_id', bc.bookingcreatePost);
 router.get('/update/:id', bc.bookingupdate);
 router.post('/update/:id', bc.bookingupdatePost);
 router.get('/delete/:id', bc.bookingdelete);
+router.get('/carddetails/:id',bc.carddetails);
+
+router.get('/invoice/:id', bc.paymentInvoice);
 
 
 
