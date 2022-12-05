@@ -129,14 +129,17 @@ module.exports.carddetails = async (req, res, next) => {
 }
 
 module.exports.paymentInvoice = async (req, res, next) => {
-    
-    booking.findOne({ where: { id: req.params.id } })
+    console.log(req.params.id);
+    booking.findOne({ where: { booking_id: req.params.id } })
         .then(result => {
+            console.log(result);
             console.log(req.identity.customer);
             let name = req.identity.customer.name
             res.render('invoice', {
                 invoice: result,
-                name: name
+                name: name,
+                
+
             })
         })
 }
