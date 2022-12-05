@@ -23,8 +23,7 @@ module.exports = async (req, res, next) => {
     req.identity.isAuthenticated = true;
     req.identity.customer = {
         id: userFromDb.dataValues.id,
-        firstName: userFromDb.dataValues.firstName,
-        lastName: userFromDb.dataValues.lastName,
+        name : userFromDb.dataValues.name,
         email: userFromDb.dataValues.email,
         role: userFromDb.dataValues.role
     }

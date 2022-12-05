@@ -132,6 +132,7 @@ module.exports.paymentInvoice = async (req, res, next) => {
     
     booking.findOne({ where: { id: req.params.id } })
         .then(result => {
+            console.log(req.identity.customer);
             let name = req.identity.customer.name
             res.render('invoice', {
                 invoice: result,
