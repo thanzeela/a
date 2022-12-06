@@ -124,11 +124,13 @@ module.exports.carddetails = async (req, res, next) => {
     console.log(carddetails)
     res.render('carddetails',
         {
-           data: carddetails
+           data: carddetails,
+           book_id: req.params.id
        })
 }
 
 module.exports.paymentInvoice = async (req, res, next) => {
+    console.log('🚗🚗🚗🚗')
     console.log(req.params.id);
     booking.findOne({ where: { booking_id: req.params.id } })
         .then(result => {

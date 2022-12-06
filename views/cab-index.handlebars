@@ -12,6 +12,10 @@
         
         <a href="/driver/create" class="btn btn-outline-primary">Add Driver</a>
         {{/if}}
+        {{#if cab.role}}
+        
+        <a href="/payment/create" class="btn btn-outline-primary">Add CabRoute</a>
+        {{/if}}
          {{#if cab.role}}
         
         <a href="/driver/" class="btn btn-outline-primary">View Driver Details</a>
@@ -22,7 +26,42 @@
         
         <a href="/booking/viewBooking/" class="btn btn-outline-primary">View Booking Details</a>
         {{/if}}
+
+
+        {{#if cab.role}}
+             <tr>
+
+            <th>cab_id</th>
+            <th>cab_number</th>
+            <th>cab_model</th>
+            <th>cab_description</th>
+            <th>cab_total_capacity</th>
+            <th>driver_id</th>
+            {{!-- <th>Edit/Delete</th> --}}
+            <th>Book Now</th>
+            
+        </tr>
+        {{#each data}}
         <tr>
+            <td>{{this.dataValues.cab_id}}</td>
+            <td>{{this.dataValues.cab_number}}</td>
+            <td>{{this.dataValues.cab_model}}</td>
+            <td>{{this.dataValues.cab_description}}</td>
+            <td>{{this.dataValues.cab_total_capacity}}</td>
+            <td>{{this.dataValues.driver_id}}</td>
+            <td><a href="/cab/update/{{this.dataValues.cab_id}}">Edit</a>
+            <a href="/cab/delete/{{this.dataValues.cab_id}}">Delete</a>
+            </td>
+            {{!-- <td>
+                <a href="/cab/update/{{this.dataValues.cab_id}}">Edit</a> |
+                <a href="/cab/delete/{{this.dataValues.cab_id}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')">Delete</a>
+            </td> --}}
+        </tr>
+        {{/each}}
+        
+
+        {{else}}
+         <tr>
 
             <th>cab_id</th>
             <th>cab_number</th>
@@ -49,5 +88,7 @@
             </td> --}}
         </tr>
         {{/each}}
+        {{/if}}
+       
     </table>
 </div>
