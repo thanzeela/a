@@ -104,7 +104,7 @@ module.exports.bookingupdatePost = async (req, res, next) => {
             where: { id: req.params.id }
         }
     )
-    res.redirect('/booking/viewBooking/');
+    res.redirect('/booking/');
 }
 module.exports.bookingdelete = async (req, res, next) => {
     let id = req.params.id;
@@ -115,7 +115,7 @@ module.exports.bookingdelete = async (req, res, next) => {
                 booking_id: id
             }
         });
-        res.redirect("/booking/viewBooking/");
+        res.redirect("/booking/");
     }
 }
 

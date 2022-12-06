@@ -32,5 +32,13 @@
         <div class="col-sm-6 offset-sm-5">
             <button class="btn btn-outline-success"><a href="/booking/invoice/{{book_id}}">Pay Now</a></button>
         </div>
+        
     </div>
+     
+</div>
+<div>
+
+            
+ <button class="btn btn-outline-success"><a href="/booking/update/{{data.dataValues.booking_id}}">Edit</a> </button>|
+                 <button class="btn btn-outline-success"><a href="/booking/delete/{{data.dataValues.booking_id}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')">Delete</a></button>
 </div>
