@@ -1,7 +1,7 @@
 const db = require('../models/booking');
 const { body, validationResult } = require('express-validator');
 const booking = require('../models/booking');
-const cab = require('../models/cab')
+const cab = require('../models/cab');
 const payment = require('../models/payment');
 module.exports.bookingindex = (req, res, next) => {
     booking.findAll().then(user => {
@@ -23,11 +23,11 @@ module.exports.bookingcreatePost =  (req, res, next) => {
 
 
      cab.findByPk(cab_id).then((cabDetails) => {
-        console.log('🛺🛺🛺🛺🛺🛺')
-        console.log(req.body.pick_up_location)
+        // console.log('🛺🛺🛺🛺🛺🛺')
+        // console.log(req.body.pick_up_location)
 
-        console.log(cabDetails)
-        console.log(cabDetails.driver_id);
+        // console.log(cabDetails)
+        // console.log(cabDetails.driver_id);
         payment.findOne({
             where: {
                 pick_up_location: req.body.pick_up_location,
@@ -104,7 +104,7 @@ module.exports.bookingupdatePost = async (req, res, next) => {
             where: { id: req.params.id }
         }
     )
-    res.redirect('/booking/');
+    res.redirect('/booking/viewBooking/');
 }
 module.exports.bookingdelete = async (req, res, next) => {
     let id = req.params.id;
@@ -115,7 +115,7 @@ module.exports.bookingdelete = async (req, res, next) => {
                 booking_id: id
             }
         });
-        res.redirect("/booking/");
+        res.redirect("/booking/viewBooking/");
     }
 }
 
@@ -143,6 +143,84 @@ module.exports.paymentInvoice = async (req, res, next) => {
             })
         })
 }
+module.exports.viewBooking = (req, res, next) => {
 
+
+
+    booking.findAll().then(result => {
+
+        res.render('viewBooking',{
+
+            data :  result
+
+        }
+
+
+
+        )
+
+
+
+    })
+
+
+
+}
+
+
+
+module.exports.searchBookingByDate = async (req, res, next)=>{
+
+    // console.log(req.body.date)
+
+    // var date = new Date(req.body.date)
+
+    // console.log(date)
+
+    date = req.body.date
+    console.log('🛩🛩🛩🛩🛩🛩')
+    console.log(date)
+
+
+
+    allbookings = await booking.findAll({
+
+        where : {
+
+            date_of_travel : date
+
+        }
+
+    }
+
+
+
+    )
+
+    console.log(allbookings)
+
+
+
+    if (allbookings.length != 0) {
+
+        res.render('viewBooking',{
+
+            data : allbookings
+
+        })
+
+
+
+    }
+
+    else{
+
+         res.send('Not found')
+
+
+
+    }
+
+ }
 
 

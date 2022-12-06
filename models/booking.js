@@ -13,11 +13,11 @@ const booking = db.sequelize.define('booking',{
     
     
     date_of_booking: {
-        type:DataTypes.DATE,
+        type:DataTypes.DATEONLY,
         allowNull:false,
     },
     date_of_travel:{
-        type:DataTypes.DATE,
+        type:DataTypes.DATEONLY,
         allowNull:false,
     },
     number_of_passengers:{
