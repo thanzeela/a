@@ -87,7 +87,14 @@
             </td>
             </tr>
             
-            
+            <tr>
+                <td>
+                    <label for="number_of_passenger">NUMBER OF PASSENGERS:</label>
+                </td>
+                <td>
+                    <input type="text" id="number_of_passenger" name="number_of_passengers">
+                </td>
+            </tr>
         
            
             <tr>
@@ -100,22 +107,31 @@
                 </td>
                 </tr>
 
-<tr>
+ <tr>
                 <td>
-                    <label for ="pick_up_location">PICK UP LOCATION:</label>
+                    <label for="pick_up_location">PICK UP LOCATION:</label>
                 </td>
                 <td>
-                    <input type="text" id="pick_up_location"    name="pick_up_location" value="{{data.dataValues.pick_up_location}}" >
+                    <select id="pick_up_location" name="pick_up_location" multiple>
+                        <option value="Ernakulam">Ernakulam</option>
+                       
+                    </select>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for ="drop_off_location">DROP OFF LOCATION:</label>
+                    <label for="drop_off_location">DROP OFF LOCATION:</label>
                 </td>
                 <td>
-                    <input type="text" id="drop_off_location" name="drop_off_location" value="{{data.dataValues.drop_off_location}}"  >
+                    <select id="drop_off_location" name="drop_off_location" multiple>
+                        <option value="Kochi">Kochi</option>
+                        <option value="palakkad">Palakkad</option>
+                        <option value="Thrissur">Thrissur</option>
+
+                    </select>
                 </td>
             </tr>
+
             <tr>
                     <td>
                         <input type="checkbox" <p>I agree the <a href="terms.html" >terms and condition</a> of website </p>
