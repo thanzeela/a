@@ -83,6 +83,7 @@ module.exports.bookingupdate = (req, res, next) => {
 }
 module.exports.bookingupdatePost = async (req, res, next) => {
     var bookingfromdb = await booking.findByPk(req.params.id);
+    let loc = await payment.findOne({where:{drop_off_location: req.body.drop_off_location}})
     console.log(req.body)
     await bookingfromdb.update(
         {
@@ -96,7 +97,8 @@ module.exports.bookingupdatePost = async (req, res, next) => {
             number_of_passengers: req.body.number_of_passengers,
             pick_up_time: req.body.pick_up_time,
             pick_up_location: req.body.pick_up_location,
-            drop_off_location: req.body.drop_off_location
+            drop_off_location: req.body.drop_off_location,
+            cost: loc.dataValues.cost
 
 
         },
