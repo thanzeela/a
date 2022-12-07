@@ -36,7 +36,14 @@
                 <td>{{invoice.dataValues.cost}}</td>
             </tr>
         </table>
-     <button class="btn btn-success" >Print pdf</button>
+     <button class="btn btn-success" id="btnprinthide" onclick=printpdf()>Print pdf</button>
   </div>
 </div>
 </div>
+<script>
+    const btn= document.getElementById('btnprinthide')
+    function printpdf(){
+        btn.style.display='none';
+        return window.print()
+    }
+</script>
