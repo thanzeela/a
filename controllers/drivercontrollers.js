@@ -92,6 +92,12 @@ module.exports.updatePost = async (req, res, next) => {
             driver_name: req.body.driver_name,
             driver_mobile_number: req.body.driver_mobile_number,
             gender: req.body.gender,
+            driver_email : req.body.driver_email,
+      
+       
+        driver_password : req.body.driver_password,
+       
+        driver_license_no : req.body.driver_license_no,
             
             
         },
