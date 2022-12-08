@@ -15,7 +15,7 @@
             <th>pick_up_location</th>
             <th>drop_off_location</th>
             <th>cost</th>
-            <th>Edit/Delete</th>
+          
             
           
         </tr>
@@ -34,10 +34,7 @@
             <td>{{this.dataValues.drop_off_location}}</td>
             <td>{{this.dataValues.cost}}</td>
             
-            <td>
-                <a href="/booking/update/{{this.dataValues.booking_id}}">Edit</a> |
-                <a href="/booking/delete/{{this.dataValues.booking_id}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')">Delete</a>
-            </td>
+            
         </tr>
         {{/each}}
     </table>
