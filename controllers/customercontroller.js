@@ -24,6 +24,7 @@ module.exports.createPost = (req, res, next) => {
             dob: req.body.dob
         })
         .then(user => {
+            req.session.role = 1;
             res.redirect("/login");
         })
 }

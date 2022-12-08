@@ -117,7 +117,7 @@ module.exports.bookingdelete = async (req, res, next) => {
                 booking_id: id
             }
         });
-        res.redirect("'/booking/carddetails/'+req.params.id");
+        res.redirect("/cab");
     }
 }
 
@@ -226,5 +226,6 @@ module.exports.searchBookingByDate = async (req, res, next)=>{
     }
 
  }
+
 
 

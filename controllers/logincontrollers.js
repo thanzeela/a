@@ -15,6 +15,7 @@ module.exports.loginPost = async (req, res, next)=>{
     }
 
     req.session.userId = userFromDb.id;
+    req.session.role = 1;
     res.redirect('/cab')
 }
 

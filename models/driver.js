@@ -1,7 +1,10 @@
 const{Sequelize,DataTypes} = require('sequelize')
 const db = require('./db');
 const driver = db.sequelize.define('driver',{
-    driver_id: {
+   
+
+
+driver_id: {
         type:DataTypes.INTEGER,
         primaryKey: true,
         
@@ -26,6 +29,22 @@ const driver = db.sequelize.define('driver',{
 
 
     },
+
+driver_email : {
+    type  : DataTypes.STRING(50),
+    allowNull : false,
+    // unique : true
+
+},
+driver_password : {
+    type : DataTypes.STRING(50),
+    allowNull : true
+},
+driver_license_no : {
+    type : DataTypes.INTEGER,
+    allowNull : false,
+
+},
 
     
     
