@@ -148,7 +148,7 @@ module.exports.allBooking= (req,res,next)=>{
     
     })
     
-     }
+}
     module.exports.viewBooking =async(req,res,next)=>{
         console.log(req.session.driverId);
         const cabresult=await cab.findOne({attributes:['cab_id'],where:{driver_id:req.session.driverId}})
